@@ -5,7 +5,7 @@ public class Giocatore {
 	
 	public Borsa borsa;
 	private int cfu;
-	static final private int CFU_INIZIALI = 2;
+	static final private int CFU_INIZIALI = 20;
 	
 	public Giocatore() {
 		this.borsa= new Borsa();

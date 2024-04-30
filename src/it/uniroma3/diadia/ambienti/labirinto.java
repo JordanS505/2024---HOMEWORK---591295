@@ -11,8 +11,6 @@ public class labirinto {
 		this.stanzaIniziale = stanzaIniziale;
 	}
 
-	
-	
 	public labirinto() {
 		creaStanze();
 	}
