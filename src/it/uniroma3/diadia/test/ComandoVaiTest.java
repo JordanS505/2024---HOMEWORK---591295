@@ -1,21 +1,18 @@
 package it.uniroma3.diadia.test;
 
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import it.uniroma3.diadia.comandi.ComandoVai;
 import it.uniroma3.diadia.partita.Partita;
 import it.uniroma3.diadia.IOConsole.*;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.labirinto;
 public class ComandoVaiTest {
 
 	@Test
 	public void testEsegui_null() {
 		IO io=new IOConsole();
-		labirinto trilocale = new LabirintoBuilder()
+		labirinto trilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanza("cucina")
 				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
@@ -24,14 +21,14 @@ public class ComandoVaiTest {
 				.addAdiacenza("cucina", "camera", "est")
 				.getLabirinto(); // restituisce il Labirinto così specificato
 		Partita partita=new Partita(trilocale);
-		ComandoVai comando= new ComandoVai(null);
+		ComandoVai comando= new ComandoVai();
 		comando.esegui(partita,io);
 	}
 	
 	@Test
 	public void testEsegui_direzione() {
 		IO io=new IOConsole();
-		labirinto trilocale = new LabirintoBuilder()
+		labirinto trilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanza("cucina")
 				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
@@ -40,14 +37,14 @@ public class ComandoVaiTest {
 				.addAdiacenza("cucina", "camera", "est")
 				.getLabirinto(); // restituisce il Labirinto così specificato
 		Partita partita=new Partita(trilocale);
-		ComandoVai comando= new ComandoVai("nord");
+		ComandoVai comando= new ComandoVai();
 		comando.esegui(partita,io);
 	}
 	
 	@Test
 	public void testEsegui_direzioneInesistente() {
 		IO io=new IOConsole();
-		labirinto trilocale = new LabirintoBuilder()
+		labirinto trilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanza("cucina")
 				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
@@ -57,7 +54,7 @@ public class ComandoVaiTest {
 				.getLabirinto(); // restituisce il Labirinto così specificato
 		Partita partita=new Partita(trilocale);
 		partita.getStanzaCorrente().impostaStanzaAdiacente("sud", null);
-		ComandoVai comando= new ComandoVai("sud");
+		ComandoVai comando= new ComandoVai();
 		comando.esegui(partita,io);
 	}
 

@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Map;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,6 +32,14 @@ public class Stanza {
 	private Map<String,Stanza> stanzeAdiacenti;
 	//private int numeroStanzeAdiacenti;
 	private List <String> direzioni;
+	
+	 private AbstractPersonaggio personaggio;
+	 public void setPersonaggio(AbstractPersonaggio personaggio) {
+	 this.personaggio = personaggio;
+	 }
+	 public AbstractPersonaggio getPersonaggio() {
+	 return this.personaggio;
+	 }
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.

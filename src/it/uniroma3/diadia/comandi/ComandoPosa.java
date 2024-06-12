@@ -6,13 +6,10 @@ import it.uniroma3.diadia.IOConsole.IO;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.partita.Partita;
 
-public class ComandoPosa implements Comando{
+public class ComandoPosa extends AbstractComando{
 	private String attrezzo;
-	private String nome;
-	public ComandoPosa(String attrezzo) {
-		this.attrezzo=attrezzo;
-		this.nome="ComandoPosa";
-	}
+	private String nome="ComandoPosa";
+	
 	@Override
 	public void esegui(Partita partita,IO io) {
 		if(partita.giocatore.borsa.isEmpty())
@@ -38,12 +35,10 @@ public class ComandoPosa implements Comando{
 	}
 	@Override
 	public String getParametro() {
-		// TODO Auto-generated method stub
 		return this.attrezzo;
 	}
 	@Override
 	public String getNome() {
-		// TODO Auto-generated method stub
 		return this.nome;
 	}
 }

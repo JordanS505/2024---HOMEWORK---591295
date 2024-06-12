@@ -1,0 +1,11 @@
+	"Stanze:N12,N11\n"+
+			"Magica:\n"+
+			"Buia:\n"+
+			"Bloccata:\n"+
+			"Inizio:N12\n"+
+			"Vincente:N11\n"+
+			"Mago:\n"+
+			"Cane:\n"+
+			"Strega:\n"+
+			"Attrezzi:martello 3 N12\n"+
+			"Uscite:\n";

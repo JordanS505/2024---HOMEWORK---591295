@@ -12,7 +12,7 @@ public class ComandoPosaTest {
 	@Test
 	public void testEsegui_null() {
 		IO io=new IOConsole();
-		labirinto trilocale = new LabirintoBuilder()
+		labirinto trilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanza("cucina")
 				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
@@ -21,14 +21,14 @@ public class ComandoPosaTest {
 				.addAdiacenza("cucina", "camera", "est")
 				.getLabirinto(); // restituisce il Labirinto così specificato
 		Partita partita=new Partita(trilocale);
-		ComandoPosa comando = new ComandoPosa(null);
+		ComandoPosa comando = new ComandoPosa();
 		comando.esegui(partita,io);
 	}
 	
 	@Test
 	public void testEsegui_oggettoNonEsistente() {
 		IO io=new IOConsole();
-		labirinto trilocale = new LabirintoBuilder()
+		labirinto trilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanza("cucina")
 				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
@@ -37,14 +37,14 @@ public class ComandoPosaTest {
 				.addAdiacenza("cucina", "camera", "est")
 				.getLabirinto(); // restituisce il Labirinto così specificato
 		Partita partita=new Partita(trilocale);
-		ComandoPosa comando = new ComandoPosa("gioco");
+		ComandoPosa comando = new ComandoPosa();
 		comando.esegui(partita,io);
 	}
 	
 	@Test
 	public void testEsegui_oggetto() {
 		IO io=new IOConsole();
-		labirinto trilocale = new LabirintoBuilder()
+		labirinto trilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanza("cucina")
 				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
@@ -55,7 +55,7 @@ public class ComandoPosaTest {
 		Partita partita=new Partita(trilocale);
 		Attrezzo attrezzo=new Attrezzo("acqua",1);
 		partita.giocatore.borsa.addAttrezzo(attrezzo);
-		ComandoPosa comando = new ComandoPosa("acqua");
+		ComandoPosa comando = new ComandoPosa();
 		comando.esegui(partita,io);
 	}
 

@@ -5,13 +5,10 @@ import it.uniroma3.diadia.IOConsole.IO;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.partita.Partita;
 
-public class ComandoPrendi implements Comando{
+public class ComandoPrendi extends AbstractComando{
 	private String attrezzo;
-	private String nome;
-	public ComandoPrendi(String attrezzo){
-		this.attrezzo=attrezzo;
-		this.nome="ComaandoPrendi";
-	}
+	private String nome="ComandoPrendi";
+	
 	@Override
 	public void esegui(Partita partita,IO io) {
 		if(this.attrezzo==null) {

@@ -1,13 +1,11 @@
 package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.giocatore.Borsa;
 
 public class stanzaProtected {
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 
-	private Borsa borsa;
 	private String nome;
 	protected Attrezzo[] attrezzi;
 	protected int numeroAttrezzi;

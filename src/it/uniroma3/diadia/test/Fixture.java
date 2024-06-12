@@ -3,7 +3,6 @@ package it.uniroma3.diadia.test;
 import java.util.List;
 
 import it.uniroma3.diadia.IOConsole.IOSimulator;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.ambienti.labirinto;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -12,7 +11,7 @@ import it.uniroma3.diadia.partita.DiaDia;
 public class Fixture {
 	public static IOSimulator creaSimulazione1(List<String> comandiDaLeggere) {
 		IOSimulator io = new IOSimulator(comandiDaLeggere);
-		labirinto labirinto = new LabirintoBuilder()
+		labirinto labirinto = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("Atrio")
 				.addAttrezzo("martello", 3)
 				.addStanzaVincente("Biblioteca")
@@ -26,7 +25,7 @@ public class Fixture {
 
 	public static IOSimulator creaSimulazione2(List<String> comandiDaLeggere) {
 		IOSimulator io = new IOSimulator(comandiDaLeggere);
-		labirinto labirinto =new LabirintoBuilder()
+		labirinto labirinto =new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("Atrio")
 				.addAttrezzo("martello", 3)
 				.addStanzaVincente("Biblioteca")
@@ -46,7 +45,7 @@ public class Fixture {
 
 	public static IOSimulator Monolocale(List<String> comandiDaLeggere) {
 		IOSimulator io = new IOSimulator(comandiDaLeggere);
-		labirinto monolocale = new LabirintoBuilder()
+		labirinto monolocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto") 
 				.addStanzaVincente("salotto") 
 				.getLabirinto();
@@ -58,7 +57,7 @@ public class Fixture {
 	
 	public static IOSimulator Bilocale(List<String> comandiDaLeggere) {
 		IOSimulator io = new IOSimulator(comandiDaLeggere);
-		labirinto bilocale = new LabirintoBuilder()
+		labirinto bilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanzaVincente("camera")
 				.addAttrezzo("letto",10) // dove? fa riferimento all’ultima stanza aggiunta
@@ -71,7 +70,7 @@ public class Fixture {
 	
 	public static IOSimulator Trilocale(List<String> comandiDaLeggere) {
 		IOSimulator io = new IOSimulator(comandiDaLeggere);
-		labirinto trilocale = new LabirintoBuilder()
+		labirinto trilocale = new labirinto.LabirintoBuilder()
 				.addStanzaIniziale("salotto")
 				.addStanza("cucina")
 				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta

@@ -4,14 +4,11 @@ import it.uniroma3.diadia.IOConsole.IO;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.partita.Partita;
 
-public class ComandoVai implements Comando{
+public class ComandoVai extends AbstractComando{
 	private String direzione;
-	private String nome;
+	private String nome="ComandoVai";
 	
-	public ComandoVai(String direzione) {
-		this.direzione=direzione;
-		this.nome="ComandoVai";
-	}
+	
 	@Override
 	public void esegui(Partita partita,IO io) {
 		Stanza stanzaCorrente=partita.getStanzaCorrente();

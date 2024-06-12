@@ -1,15 +1,19 @@
 package it.uniroma3.diadia.partita;
 
 
+import java.io.FileNotFoundException;
+
 import it.uniroma3.diadia.IOConsole.IO;
 
 //import java.util.Scanner;
 
 import it.uniroma3.diadia.IOConsole.IOConsole;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.ambienti.CaricatoreLabirinto;
+import it.uniroma3.diadia.ambienti.FormatoFileNonValidoException;
 import it.uniroma3.diadia.ambienti.labirinto;
 import it.uniroma3.diadia.comandi.Comando;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
+//import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 
 
 /**
@@ -46,7 +50,7 @@ public class DiaDia {
 		this.io=io;
 	}
 
-	public void gioca() {
+	public void gioca()  {
 		String istruzione; 
 		//Scanner scannerDiLinee;
 
@@ -62,10 +66,11 @@ public class DiaDia {
 	 * Processa una istruzione 
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
+	 * @throws Exception 
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica();
+		FabbricaDiComandiRiflessiva factory = new FabbricaDiComandiRiflessiva();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita,this.io);
 		if(partita.giocatore.getCfu()==0) {
@@ -161,21 +166,25 @@ public class DiaDia {
 
 	/**
 	 * Comando "Fine".
+	 * @throws FileNotFoundException 
+	 * @throws FormatoFileNonValidoException 
 	 */
 	/*private void fine() {
 		IOconsole.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 	}*/
 
-	public static void main(String[] argc) {
+	public static void main(String[] argc) throws FileNotFoundException, FormatoFileNonValidoException {
 		IO io = new IOConsole();
-		labirinto trilocale = new LabirintoBuilder()
-				.addStanzaIniziale("salotto")
-				.addStanza("cucina")
-				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
-				.addStanzaVincente("camera")
-				.addAdiacenza("salotto", "cucina", "nord")
-				.addAdiacenza("cucina", "camera", "est")
-				.getLabirinto(); // restituisce il Labirinto così specificato
+		CaricatoreLabirinto n=new CaricatoreLabirinto("C://Users//jorda//Desktop//lol.txt");
+		n.carica();
+		labirinto trilocale =n.getLab();
+//				.addStanzaIniziale("salotto")
+//				.addStanza("cucina")
+//				.addAttrezzo("pentola",1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
+//				.addStanzaVincente("camera")
+//				.addAdiacenza("salotto", "cucina", "nord")
+//				.addAdiacenza("cucina", "camera", "est")
+//				.getLabirinto(); // restituisce il Labirinto così specificato
 		DiaDia gioco = new DiaDia(io,trilocale);
 		gioco.gioca();
 	}
